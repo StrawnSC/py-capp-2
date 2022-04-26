@@ -27,7 +27,7 @@ jobs:
       - name: Log in to container registry
         uses: docker/login-action@v1
         with:
-          registry: caupgh387235400165acr.azurecr.io
+          registry: caupgh389075232817acr.azurecr.io
           username: ${{ secrets.UPGH38_REGISTRY_USERNAME }}
           password: ${{ secrets.UPGH38_REGISTRY_PASSWORD }}
 
@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: caupgh387235400165acr.azurecr.io/upgh38:${{ github.sha }}
+          tags: caupgh389075232817acr.azurecr.io/upgh38:${{ github.sha }}
           file: ./Dockerfile
           context: ./
 
@@ -58,5 +58,5 @@ jobs:
             echo "Installing containerapp extension"
             az config set extension.use_dynamic_install=yes_without_prompt
             echo "Starting Deploying"
-            az containerapp registry set -n upgh38 -g sca --server caupgh387235400165acr.azurecr.io --username  ${{ secrets.UPGH38_REGISTRY_USERNAME }} --password ${{ secrets.UPGH38_REGISTRY_PASSWORD }}
-            az containerapp update -n upgh38 -g sca --image caupgh387235400165acr.azurecr.io/upgh38:${{ github.sha }}
+            az containerapp registry set -n upgh38 -g sca --server caupgh389075232817acr.azurecr.io --username  ${{ secrets.UPGH38_REGISTRY_USERNAME }} --password ${{ secrets.UPGH38_REGISTRY_PASSWORD }}
+            az containerapp update -n upgh38 -g sca --image caupgh389075232817acr.azurecr.io/upgh38:${{ github.sha }}
